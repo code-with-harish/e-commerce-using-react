@@ -1,0 +1,19 @@
+Flask==3.0.0
+python-dotenv==1.0.0
+werkzeug==3.0.1
+
+# Option 1: Local Whisper (Recommended - FREE)
+openai-whisper==20231117
+torch==2.1.0
+torchaudio==2.1.0
+
+# Option 2: Groq API (FREE tier available)
+groq==0.4.1
+
+# Option 3: Hugging Face (FREE)
+transformers==4.36.0
+accelerate==0.25.0
+
+# Additional utilities
+pydub==0.25.1
+numpy==1.24.3

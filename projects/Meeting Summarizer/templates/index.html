@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Summarizer - AI-Powered Transcription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎤 Meeting Summarizer</h1>
+            <p class="subtitle">Transform meeting audio into actionable insights with AI</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <h2>Upload Meeting Audio</h2>
+                <p>Drag & drop your audio file here or click to browse</p>
+                <p class="file-info">Supported formats: MP3, WAV, M4A, MP4, WEBM (max 100MB)</p>
+                <input type="file" id="audioFile" accept=".mp3,.wav,.m4a,.mp4,.webm" hidden>
+                <button class="btn btn-primary" onclick="document.getElementById('audioFile').click()">
+                    Choose File
+                </button>
+            </div>
+            
+            <div id="selectedFile" class="selected-file hidden">
+                <div class="file-details">
+                    <span class="file-name"></span>
+                    <span class="file-size"></span>
+                </div>
+                <button class="btn btn-success" onclick="uploadFile()">
+                    Process Audio
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Processing your meeting audio...</p>
+            <p class="loading-detail">This may take a few moments</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="results-section hidden">
+            <h2>📊 Meeting Analysis</h2>
+            
+            <div class="result-card">
+                <h3>📝 Summary</h3>
+                <div id="summaryContent" class="content-box"></div>
+            </div>
+
+            <div class="result-card">
+                <h3>🎯 Key Decisions</h3>
+                <div id="decisionsContent" class="content-box"></div>
+            </div>
+
+            <div class="result-card">
+                <h3>✅ Action Items</h3>
+                <div id="actionItemsContent" class="content-box"></div>
+            </div>
+
+            <div class="result-card">
+                <h3>💬 Discussion Points</h3>
+                <div id="discussionContent" class="content-box"></div>
+            </div>
+
+            <div class="result-card">
+                <h3>📄 Full Transcript</h3>
+                <div id="transcriptContent" class="content-box transcript"></div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="copyToClipboard()">
+                    📋 Copy Summary
+                </button>
+                <button class="btn btn-secondary" onclick="downloadResults()">
+                    💾 Download Report
+                </button>
+                <button class="btn btn-primary" onclick="resetForm()">
+                    🔄 Process Another Meeting
+                </button>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <div id="errorSection" class="error-section hidden">
+            <div class="error-message">
+                <h3>❌ Error</h3>
+                <p id="errorMessage"></p>
+                <button class="btn btn-secondary" onclick="resetForm()">
+                    Try Again
+                </button>
+            </div>
+        </div>
+
+        <!-- Meeting History -->
+        <section class="history-section">
+            <h2>📚 Recent Meetings</h2>
+            <button class="btn btn-secondary" onclick="loadMeetingHistory()">
+                Load History
+            </button>
+            <div id="historyContent" class="history-list"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Built with OpenAI Whisper & GPT-4 | &copy; 2025 Meeting Summarizer</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
