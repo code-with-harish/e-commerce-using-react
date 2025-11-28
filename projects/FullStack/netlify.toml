@@ -1,0 +1,21 @@
+# Netlify configuration for frontend deployment
+[build]
+  base = "client"
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect API calls to backend (update with your Render URL)
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-render-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# SPA fallback - redirect all routes to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
