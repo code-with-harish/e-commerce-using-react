@@ -38,4 +38,4 @@ class Config:
         os.makedirs('static/css', exist_ok=True)
         os.makedirs('static/js', exist_ok=True)
         os.makedirs('templates', exist_ok=True)
-        os.makedirs('models', exist_ok=True)  # For local models
+        os.makedirs('models', exist_ok=True)  # For local modelss
